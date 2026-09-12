@@ -74,7 +74,7 @@ export const LobbyPage: React.FC = () => {
                     className="btn btn-secondary"
                     onClick={() => navigate("/player")}
                 >
-                    Create Player{" "}
+                    Create New Player{" "}
                 </button>
             </footer>
         </div>

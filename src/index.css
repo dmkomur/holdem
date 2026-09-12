@@ -38,6 +38,7 @@ body {
     linear-gradient(rgba(138, 43, 226, 0.15) 1px, transparent 1px),
     linear-gradient(90deg, rgba(138, 43, 226, 0.15) 1px, transparent 1px);
   background-size: 24px 24px;
+  animation: grid-pulse 6s ease-in-out infinite;
 }
 
 .pixel-border {
@@ -99,4 +100,36 @@ a {
 
 a:hover {
   color: var(--texas-orange);
+}
+
+@keyframes grid-pulse {
+
+  0%,
+  100% {
+    /* Фиолетовый (исходный) */
+    background-image:
+      linear-gradient(rgba(138, 43, 226, 0.15) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(138, 43, 226, 0.15) 1px, transparent 1px);
+  }
+
+  75% {
+    /* Неоново-голубой/киберпанк */
+    background-image:
+      linear-gradient(rgba(98, 17, 204, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(62, 11, 155, 0.25) 1px, transparent 1px);
+  }
+
+  50% {
+    /* Неоново-голубой/киберпанк */
+    background-image:
+      linear-gradient(rgba(90, 12, 192, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(76, 11, 198, 0.25) 1px, transparent 1px);
+  }
+
+  25% {
+    /* Неоново-голубой/киберпанк */
+    background-image:
+      linear-gradient(rgba(90, 12, 192, 0.25) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(59, 11, 147, 0.25) 1px, transparent 1px);
+  }
 }

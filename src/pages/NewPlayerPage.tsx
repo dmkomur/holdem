@@ -23,23 +23,25 @@ export const NewPlayerPage: React.FC = () => {
 
     return (
         <div className="new-player-card">
-            <h2 className="card-title">Player Name</h2>
+            <h2 className="card-title">New Player</h2>
             <p className="card-subtitle">
-                Enter your name and get 100 credits.
+                {currentUser
+                    ? `Current player: "${currentUser}". Creating a new player will reset previous progress and issue $100.`
+                    : "Enter a name to start a new game with $100 credits."}
             </p>
 
             <form onSubmit={handleSubmit} className="player-form">
                 <div className="form-group">
                     <label htmlFor="user-name" className="form-label">
-                        Name{" "}
+                        Player Name
                     </label>
                     <input
                         id="user-name"
                         name="userName"
                         type="text"
                         className="form-input"
-                        defaultValue={currentUser}
-                        placeholder="Enter your name..."
+                        defaultValue="" /* Всегда пустой инпут для ввода НОВОГО имени */
+                        placeholder="Enter name..."
                         maxLength={15}
                         autoFocus
                         required
@@ -48,7 +50,7 @@ export const NewPlayerPage: React.FC = () => {
 
                 <div className="form-actions">
                     <button type="submit" className="btn btn-primary">
-                        READY ($100)
+                        START WITH $100
                     </button>
                 </div>
 
@@ -57,7 +59,9 @@ export const NewPlayerPage: React.FC = () => {
                     className="btn btn-link"
                     onClick={() => navigate("/")}
                 >
-                    Return to Lobby
+                    {currentUser
+                        ? "Cancel & Return to Lobby"
+                        : "Return to Lobby"}
                 </button>
             </form>
         </div>
