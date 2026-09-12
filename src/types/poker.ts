@@ -23,26 +23,28 @@ export interface PlayingCard {
 }
 
 export type PokerHand =
-    | "Jacks or Better" // Пара Валетов, Дам, Королей или Тузов (минимальный выигрыш)
-    | "Two Pair" // Две разные пары (например, 8-8 и Q-Q)
-    | "Three of a Kind" // Тройка / Сет (три карты одного достоинства)
-    | "Straight" // Стрит (5 карт подряд разных мастей)
-    | "Flush" // Флеш (5 карт одной масти)
-    | "Full House" // Фулл-Хаус (Тройка + Пара)
-    | "Four of a Kind" // Каре (4 карты одного достоинства)
-    | "Straight Flush" // Стрит-Флеш (5 карт подряд одной масти)
-    | "Royal Flush"; // Роял-Флеш (10, J, Q, K, A одной масти)
+    | "Lose"
+    | "Jacks or Better"
+    | "Two Pair"
+    | "Three of a Kind"
+    | "Straight"
+    | "Flush"
+    | "Full House"
+    | "Four of a Kind"
+    | "Straight Flush"
+    | "Royal Flush";
 
 export const PAYOUT_TABLE: Record<PokerHand, number> = {
-    "Jacks or Better": 1, // x1 (возврат ставки при ставке 1)
-    "Two Pair": 2, // x2
-    "Three of a Kind": 3, // x3
-    Straight: 4, // x4
-    Flush: 6, // x6
-    "Full House": 9, // x9
-    "Four of a Kind": 25, // x25
-    "Straight Flush": 50, // x50
-    "Royal Flush": 250, // x250 (главный джекпот!)
+    Lose: 0,
+    "Jacks or Better": 1,
+    "Two Pair": 2,
+    "Three of a Kind": 3,
+    Straight: 4,
+    Flush: 6,
+    "Full House": 9,
+    "Four of a Kind": 25,
+    "Straight Flush": 50,
+    "Royal Flush": 250,
 };
 
 export interface Player {
@@ -51,3 +53,8 @@ export interface Player {
 }
 
 export type GameStage = "idle" | "dealt" | "evaluated";
+
+export interface HandEvaluation {
+    hand: PokerHand;
+    payoutMultiplier: number;
+}
