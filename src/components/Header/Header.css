@@ -1,0 +1,22 @@
+.app-header {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding: 0.5rem 1rem;
+        border-bottom: 1px solid rgba(255, 140, 0, 0.3);
+        box-sizing: border-box;
+        font-family: inherit;
+}
+
+.brand-logo {
+        text-decoration: none;
+        touch-action: manipulation;
+}
+
+.brand-title {
+        font-size: clamp(1rem, 2.5vw, 1.4rem);
+        color: var(--texas-orange);
+        letter-spacing: 0.5px;
+        text-align: center;
+}
