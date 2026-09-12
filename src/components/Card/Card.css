@@ -1,0 +1,107 @@
+
+.card {
+        width: clamp(58px, 16vw, 110px);
+        height: clamp(84px, 23vw, 155px);
+        background-color: #ffffff;
+        border: 3px solid var(--texas-orange);
+        border-radius: 4px;
+        padding: 4px;
+        position: relative;
+        user-select: none;
+        cursor: pointer;
+        font-family: var(--font-pixel);
+        display: grid;
+        grid-template-rows: auto 1fr auto;
+        grid-template-columns: 1fr;
+        box-shadow: 0 4px 0px rgba(0, 0, 0, 0.6);
+        transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+@media (hover: hover) {
+        .card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 8px 0px rgba(0, 0, 0, 0.7), 0 0 12px var(--texas-orange-glow);
+        }
+}
+
+.card--held {
+        border-color: var(--neon-cyan);
+        box-shadow: 0 0 12px var(--neon-cyan), 0 4px 0px rgba(0, 0, 0, 0.6);
+        transform: translateY(-8px);
+}
+
+.card--held::after {
+        content: 'HOLD';
+        position: absolute;
+        top: -22px;
+        left: 50%;
+        transform: translateX(-50%);
+        background-color: var(--neon-cyan);
+        color: var(--bg-deep-space);
+        font-size: clamp(0.45rem, 1.5vw, 0.6rem);
+        padding: 2px 5px;
+        border: 2px solid #ffffff;
+        white-space: nowrap;
+}
+
+.card--red {
+        color: var(--suit-red);
+}
+
+.card--black {
+        color: #111111;
+}
+
+.card__top {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        font-size: clamp(0.55rem, 1.8vw, 0.8rem);
+        line-height: 1;
+}
+
+.card__center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: clamp(1.2rem, 4vw, 2.2rem);
+}
+
+.card__bottom {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        font-size: clamp(0.55rem, 1.8vw, 0.8rem);
+        line-height: 1;
+        transform: rotate(180deg);
+}
+
+
+.card--face-down {
+        background-color: var(--bg-card-purple);
+        border-color: var(--royal-purple);
+        background-image:
+                repeating-linear-gradient(45deg, var(--royal-purple) 0, var(--royal-purple) 8px, transparent 0, transparent 16px),
+                repeating-linear-gradient(-45deg, var(--texas-orange) 0, var(--texas-orange) 8px, transparent 0, transparent 16px);
+        background-size: 20px 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+.card__back-emblem {
+        background-color: var(--bg-deep-space);
+        border: 2px solid var(--texas-orange);
+        color: var(--neon-gold);
+        font-size: clamp(0.45rem, 1.5vw, 0.6rem);
+        padding: 4px 5px;
+        text-align: center;
+        box-shadow: 0 0 6px var(--texas-orange-glow);
+}
+
+@media (max-width: 480px) {
+        .card {
+                border-width: 2px;
+                padding: 2px;
+        }
+}

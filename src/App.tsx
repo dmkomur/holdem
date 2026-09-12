@@ -1,36 +1,38 @@
+import { Card } from "./components/Card/Card";
+
 export function App() {
     return (
-        <div style={{ padding: "2rem", textAlign: "center" }}>
-            <h1>SPACE TEXAS</h1>
-            <p
-                style={{
-                    margin: "1.5rem 0",
-                    color: "var(--neon-cyan)",
-                    fontSize: "0.8rem",
-                }}
-            >
-                RETRO VIDEO POKER
-            </p>
+        <div style={{ padding: "1rem", textAlign: "center" }}>
+            <h1 style={{ fontSize: "1.2rem" }}>SPACE TEXAS</h1>
 
             <div
-                className="pixel-border"
-                style={{ maxWidth: "420px", margin: "0 auto 2rem" }}
+                style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "2rem",
+                    width: "100%",
+                    maxWidth: "600px",
+                    margin: "2rem auto 0",
+                }}
             >
-                <p style={{ color: "var(--text-main)", fontSize: "0.7rem" }}>
-                    SYSTEM: READY
-                </p>
-                <p
-                    style={{
-                        marginTop: "0.8rem",
-                        color: "var(--neon-gold)",
-                        fontSize: "0.8rem",
-                    }}
-                >
-                    COINS: 100
-                </p>
+                <Card
+                    card={{ id: "1", suit: "hearts", rank: "A", value: 14 }}
+                />
+                <Card
+                    card={{ id: "2", suit: "spades", rank: "K", value: 13 }}
+                    isHeld={true}
+                />
+                <Card
+                    card={{ id: "3", suit: "diamonds", rank: "10", value: 10 }}
+                />
+                <Card
+                    card={{ id: "4", suit: "clubs", rank: "J", value: 11 }}
+                    isHeld={true}
+                />
+                <Card isFaceDown />
             </div>
-
-            <button className="pixel-button">DEAL HAND</button>
         </div>
     );
 }
