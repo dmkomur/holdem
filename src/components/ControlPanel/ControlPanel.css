@@ -13,7 +13,7 @@
         justify-content: space-around;
         align-items: center;
         background: rgba(15, 23, 42, 0.7);
-        border: 1px solid var(--royal-purple-glow);
+        border: 2px solid var(--royal-purple-glow);
         border-radius: 6px;
         padding: 0.35rem 0.5rem;
 }
@@ -38,7 +38,6 @@
 
 .status-item.highlight .status-value {
         color: var(--texas-orange);
-        ;
 }
 
 .action-buttons {
@@ -73,32 +72,25 @@
         flex: 1;
         background: var(--bg-dark-overlay);
         color: var(--suit-black);
-        border: 1px solid var(--bg-card-purple);
+        border: 2px solid var(--bg-card-purple);
 }
 
 .btn-secondary:hover:not(:disabled) {
         background: var(--bg-dark-overlay);
         border-color: var(--texas-orange);
         color: var(--texas-orange-glow);
-        ;
 }
 
 .btn-deal {
         flex: 1.6;
         min-height: 50px;
-        background: linear-gradient(135deg, var(--texas-orange) 0%, var(--texas-orange-glow) 100%);
-        color: var(--bg-deep-space);
+        background-color: var(--texas-orange);
         font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-        border: 1px solid var(--royal-purple);
-        box-shadow: 0 0 10px var(--royal-purple-glow),
+        border: 2px solid var(--bg-card-purple);
 }
 
 .btn-deal:hover:not(:disabled) {
-        linear-gradient(135deg, var(--texas-orange) 0%, var(--texas-orange-glow) 100%);
-        box-shadow: 2px 1px 2px var(--neon-cyan);
-        transform: translateY(-1px);
-}
-
-.btn-deal:active:not(:disabled) {
-        transform: translateY(1px);
+        background-color: var(--texas-orange-glow);
+        box-shadow: 2px 2px 2px var(--neon-gold);
+        border-color: var(--neon-gold);
 }
