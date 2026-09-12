@@ -1,0 +1,76 @@
+.paytable-container {
+        width: 100%;
+        max-width: 1200px;
+        display: flex;
+        flex-direction: column;
+        background: rgba(10, 15, 30, 0.85);
+        border: 2px solid var(--color-border-neon, #00f3ff);
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(0, 243, 255, 0.2);
+        font-family: inherit;
+        box-sizing: border-box;
+}
+
+.paytable-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.4rem 0.75rem;
+        border-bottom: 1px solid rgba(0, 243, 255, 0.3);
+        font-weight: 700;
+        font-size: clamp(0.75rem, 2vw, 0.9rem);
+        color: #ffe600;
+}
+
+.paytable-body {
+        display: flex;
+        flex-direction: column;
+        /* Резиновый зазор между строками вместо фиксированных padding */
+        gap: 2px;
+        padding: 0.25rem 0;
+}
+
+.paytable-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.2rem 0.75rem;
+        font-size: clamp(0.7rem, 1.8vw, 0.85rem);
+        transition: background-color 0.2s ease;
+}
+
+.hand-name {
+        color: #a0c4ff;
+        font-weight: 500;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+}
+
+.payout-value {
+        color: #ffffff;
+        font-weight: 700;
+        margin-left: 0.5rem;
+}
+
+/* Подсветка выигравшей комбинации */
+.paytable-row.winning-row {
+        background-color: #ffe600;
+        animation: pulse-win 1s infinite alternate;
+}
+
+.paytable-row.winning-row .hand-name,
+.paytable-row.winning-row .payout-value {
+        color: #000000;
+        font-weight: 800;
+}
+
+@keyframes pulse-win {
+        from {
+                box-shadow: inset 0 0 6px #ff007f;
+        }
+
+        to {
+                box-shadow: inset 0 0 14px #00f3ff;
+        }
+}

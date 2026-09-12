@@ -1,9 +1,24 @@
 import { Card } from "./components/Card/Card";
+import { Paytable } from "./components/Paytable/Paytable";
+import { ControlPanel } from "./components/ControlPanel/ControlPanel";
 
 export function App() {
     return (
         <div style={{ padding: "1rem", textAlign: "center" }}>
             <h1 style={{ fontSize: "1.2rem" }}>SPACE TEXAS</h1>
+            <div
+                style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "2rem",
+                    maxWidth: "1200px",
+                    margin: "2rem auto 0",
+                }}
+            >
+                <Paytable />
+            </div>
 
             <div
                 style={{
@@ -32,6 +47,19 @@ export function App() {
                     isHeld={true}
                 />
                 <Card isFaceDown />
+            </div>
+            <div
+                style={{
+                    display: "flex",
+                    gap: "0.5rem",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    marginTop: "2rem",
+                    maxWidth: "1200px",
+                    margin: "2rem auto 0",
+                }}
+            >
+                <ControlPanel />
             </div>
         </div>
     );

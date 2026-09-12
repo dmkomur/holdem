@@ -12,11 +12,9 @@ export interface CardState {
 }
 
 interface GameStore {
-    // --- Профиль и Баланс ---
     userName: string;
     balance: number;
 
-    // --- Состояние партии ---
     bet: number;
     status: GameStatus;
     deck: PlayingCard[];
@@ -24,7 +22,6 @@ interface GameStore {
     evaluation: HandEvaluation | null;
     winAmount: number;
 
-    // --- Экшены ---
     startNewPlayerSession: (name: string) => void;
     resetSession: () => void;
     setBet: (amount: number) => void;
@@ -37,7 +34,6 @@ interface GameStore {
 export const useGameStore = create<GameStore>()(
     persist(
         (set, get) => ({
-            // Начальное дефолтное состояние
             userName: "",
             balance: 100,
             bet: 1,
@@ -47,16 +43,10 @@ export const useGameStore = create<GameStore>()(
             evaluation: null,
             winAmount: 0,
 
-            /**
-             * Создание сессии ДЛЯ НОВОГО ИГРОКА:
-             * Сбрасываем баланс строго на стартовые 100 кредитов
-             * и очищаем любую незавершенную партию.
-             */
             startNewPlayerSession: (name: string) => {
                 set({
                     userName: name,
-                    balance: 100, // Гарантированные стартовые 100 кредитов
-                    bet: 1,
+                    balance: 100,
                     status: "idle",
                     deck: [],
                     hand: [],
@@ -65,9 +55,6 @@ export const useGameStore = create<GameStore>()(
                 });
             },
 
-            /**
-             * Полный сброс (выход на экран приветствия)
-             */
             resetSession: () => {
                 set({
                     userName: "",
@@ -81,7 +68,6 @@ export const useGameStore = create<GameStore>()(
                 });
             },
 
-            // Изменение ставки
             setBet: (amount) => {
                 const { status, balance } = get();
                 if (status !== "idle") return;
@@ -90,7 +76,6 @@ export const useGameStore = create<GameStore>()(
                 }
             },
 
-            // Первое колено раздачи (Deal)
             deal: () => {
                 const { balance, bet, status } = get();
                 if (status !== "idle" || balance < bet) return;
@@ -114,7 +99,6 @@ export const useGameStore = create<GameStore>()(
                 });
             },
 
-            // Зафиксировать / снять карту (HOLD)
             toggleHold: (index) => {
                 const { status, hand } = get();
                 if (status !== "dealt") return;
@@ -128,7 +112,6 @@ export const useGameStore = create<GameStore>()(
                 set({ hand: newHand });
             },
 
-            // Второе колено раздачи (Draw)
             draw: () => {
                 const { status, hand, deck, bet, balance } = get();
                 if (status !== "dealt") return;

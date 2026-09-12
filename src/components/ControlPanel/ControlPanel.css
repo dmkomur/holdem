@@ -1,0 +1,104 @@
+.control-panel {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        width: 100%;
+        font-family: inherit;
+        box-sizing: border-box;
+}
+
+/* Строка статуса */
+.status-bar {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        background: rgba(15, 23, 42, 0.7);
+        border: 1px solid var(--royal-purple-glow);
+        border-radius: 6px;
+        padding: 0.35rem 0.5rem;
+}
+
+.status-item {
+        display: flex;
+        align-items: center;
+        gap: 0.4rem;
+}
+
+.status-label {
+        font-size: clamp(0.65rem, 1.5vw, 0.75rem);
+        color: var(--text-main);
+        font-weight: 600;
+}
+
+.status-value {
+        font-size: clamp(0.9rem, 2vw, 1.1rem);
+        font-weight: 700;
+        color: var(--text-main);
+}
+
+.status-item.highlight .status-value {
+        color: var(--texas-orange);
+        ;
+}
+
+.action-buttons {
+        display: flex;
+        gap: 0.5rem;
+        width: 100%;
+        align-items: center;
+}
+
+.btn {
+        font-family: inherit;
+        min-height: 44px;
+        padding: 0.4rem 0.75rem;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+        cursor: pointer;
+        border: none;
+        transition: all 0.15s ease-in-out;
+        touch-action: manipulation;
+        box-sizing: border-box;
+}
+
+.btn:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        box-shadow: none !important;
+        transform: none !important;
+}
+
+.btn-secondary {
+        flex: 1;
+        background: var(--bg-dark-overlay);
+        color: var(--suit-black);
+        border: 1px solid var(--bg-card-purple);
+}
+
+.btn-secondary:hover:not(:disabled) {
+        background: var(--bg-dark-overlay);
+        border-color: var(--texas-orange);
+        color: var(--texas-orange-glow);
+        ;
+}
+
+.btn-deal {
+        flex: 1.6;
+        min-height: 50px;
+        background: linear-gradient(135deg, var(--texas-orange) 0%, var(--texas-orange-glow) 100%);
+        color: var(--bg-deep-space);
+        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+        border: 1px solid var(--royal-purple);
+        box-shadow: 0 0 10px var(--royal-purple-glow),
+}
+
+.btn-deal:hover:not(:disabled) {
+        linear-gradient(135deg, var(--texas-orange) 0%, var(--texas-orange-glow) 100%);
+        box-shadow: 2px 1px 2px var(--neon-cyan);
+        transform: translateY(-1px);
+}
+
+.btn-deal:active:not(:disabled) {
+        transform: translateY(1px);
+}
