@@ -16,10 +16,10 @@ export type Rank =
     | "A";
 
 export interface PlayingCard {
-    id: string; // Уникальный ID карты (например, "hearts-A" или "spades-10")
-    suit: Suit; // Масть карты ('hearts' | 'diamonds' | 'clubs' | 'spades')
-    rank: Rank; // Достоинство карты ('2' .. 'A')
-    value: number; // Числовое значение для вычисления комбинаций (от 2 до 14, где A = 14)
+    id: string;
+    suit: Suit;
+    rank: Rank;
+    value: number;
 }
 
 export type PokerHand =
