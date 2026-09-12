@@ -1,0 +1,102 @@
+:root {
+  --bg-deep-space: #130a2a;
+  --bg-card-purple: #231145;
+  --texas-orange: #ff6b00;
+  --texas-orange-glow: #ff8800;
+  --royal-purple: #8a2be2;
+  --royal-purple-glow: #b055ff;
+
+  --neon-cyan: #00ffff;
+  --neon-gold: #ffd700;
+  --suit-red: #ff3366;
+  --suit-black: #e0e0e0;
+
+  --text-main: #ffffff;
+  --text-muted: #a090c0;
+  --bg-dark-overlay: #080412;
+
+  --font-pixel: 'Press Start 2P', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-deep-space);
+  color: var(--text-main);
+  font-family: var(--font-pixel);
+  font-size: 12px;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  background-image:
+    linear-gradient(rgba(138, 43, 226, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(138, 43, 226, 0.15) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.pixel-border {
+  border: 4px solid var(--texas-orange);
+  box-shadow:
+    0 0 12px rgba(255, 107, 0, 0.4),
+    inset 0 0 12px rgba(138, 43, 226, 0.3);
+  background: var(--bg-card-purple);
+  padding: 1rem;
+}
+
+.pixel-button {
+  font-family: var(--font-pixel);
+  font-size: 0.75rem;
+  padding: 12px 18px;
+  color: var(--bg-deep-space);
+  background-color: var(--texas-orange);
+  border: 4px solid #ffffff;
+  box-shadow: 0 4px 0px var(--royal-purple);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.1s ease;
+  user-select: none;
+}
+
+.pixel-button:hover {
+  background-color: var(--texas-orange-glow);
+  box-shadow: 0 0 14px var(--texas-orange-glow), 0 4px 0px var(--royal-purple-glow);
+  transform: translateY(-2px);
+}
+
+.pixel-button:active {
+  transform: translateY(2px);
+  box-shadow: 0 2px 0px var(--royal-purple);
+}
+
+.pixel-button:disabled {
+  background-color: #4a3b63;
+  color: #7a6b93;
+  border-color: #5b4b73;
+  box-shadow: none;
+  cursor: not-allowed;
+  transform: none;
+}
+
+h1,
+h2,
+h3 {
+  font-family: var(--font-pixel);
+  color: var(--texas-orange);
+  text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+  letter-spacing: 1px;
+}
+
+a {
+  color: var(--neon-cyan);
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--texas-orange);
+}
