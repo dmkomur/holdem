@@ -49,7 +49,7 @@ export const NewPlayerPage: React.FC = () => {
                 </div>
 
                 <div className="form-actions">
-                    <button type="submit" className="btn btn-primary">
+                    <button type="submit" className=" btn-primary">
                         START WITH $100
                     </button>
                 </div>

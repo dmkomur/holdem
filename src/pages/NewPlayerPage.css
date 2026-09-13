@@ -77,46 +77,27 @@
         flex: 1;
 }
 
-/* Кнопки */
-.btn {
-        font-family: inherit;
-        min-height: 44px;
-        padding: 0.5rem 0.75rem;
-        border-radius: 6px;
-        font-weight: 700;
-        font-size: clamp(0.8rem, 2vw, 0.9rem);
-        cursor: pointer;
-        border: none;
-        transition: all 0.15s ease;
-        touch-action: manipulation;
-}
 
 .btn:disabled {
         opacity: 0.35;
         cursor: not-allowed;
 }
 
-.btn-secondary {
-        background: rgba(30, 41, 59, 0.8);
-        color: var(--suit-gray);
-        border: 1px solid rgba(255, 140, 0, 0.3);
-}
 
-.btn-secondary:hover:not(:disabled) {
-        background: rgba(51, 65, 85, 0.9);
-        color: var(--texas-orange);
-}
 
 .btn-primary {
+        flex: 1.6;
+        min-height: 50px;
         background-color: var(--texas-orange);
-        color: var(--text-main);
-        border: 1px solid var(--texas-orange);
-        box-shadow: 0 0 10px rgba(255, 140, 0, 0.3);
+        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+        border: 8px outset var(--texas-orange-glow);
+        font-family: inherit;
 }
 
 .btn-primary:hover:not(:disabled) {
-        background-color: var(--texas-orange-glow);
-        box-shadow: 0 0 15px rgba(255, 140, 0, 0.6);
+        background-color: #e76508;
+        box-shadow: 0px 0px 2px var(--neon-gold);
+        border-color: var(--texas-orange);
 }
 
 .btn-link {
@@ -132,7 +113,7 @@
         color: #ff8c00;
 }
 
-/* Кнопка заблокирована, если инпут пуст или невалиден */
+
 .player-form:has(.form-input:placeholder-shown) .btn-primary {
         opacity: 0.35;
         cursor: not-allowed;
