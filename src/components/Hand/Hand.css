@@ -1,0 +1,8 @@
+.hand-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: clamp(0.25rem, 1.5vw, 0.75rem);
+        width: 100%;
+        box-sizing: border-box;
+}

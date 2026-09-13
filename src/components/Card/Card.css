@@ -1,7 +1,6 @@
-
 .card {
-        width: clamp(58px, 16vw, 110px);
-        height: clamp(84px, 23vw, 155px);
+        width: clamp(58px, 16vw, 180px);
+        height: clamp(84px, 23vw, 240px);
         background-color: #ffffff;
         border: 3px solid var(--texas-orange);
         border-radius: 4px;
