@@ -84,7 +84,15 @@ body {
   transform: none;
 }
 
-h1,
+h1 {
+  animation: flicker 9s infinite;
+  font-family: var(--font-pixel);
+  color: var(--texas-orange);
+  text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+  letter-spacing: 1px;
+}
+
+
 h2,
 h3 {
   font-family: var(--font-pixel);
@@ -131,5 +139,73 @@ a:hover {
     background-image:
       linear-gradient(rgba(90, 12, 192, 0.25) 1px, transparent 1px),
       linear-gradient(90deg, rgba(59, 11, 147, 0.25) 1px, transparent 1px);
+  }
+}
+
+
+@keyframes flicker {
+
+  /* Горит ровно ~2 секунды (от 0% до 40%) */
+  0%,
+  40% {
+    text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+    opacity: 1;
+  }
+
+  /* Прерывистое мерцание (быстрый сбой проводки) */
+  42% {
+    text-shadow: none;
+    opacity: 0.3;
+  }
+
+  44% {
+    text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+    opacity: 1;
+  }
+
+  46% {
+    text-shadow: none;
+    opacity: 0.2;
+  }
+
+  48% {
+    text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+    opacity: 0.9;
+  }
+
+  /* Полностью тухнет на ~1 секунду */
+  50%,
+  70% {
+    text-shadow: none;
+    opacity: 0.15;
+    /* Оставляем едва заметную тусклость */
+  }
+
+  /* Пара быстрых морганий перед включением */
+  72% {
+    text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+    opacity: 1;
+  }
+
+  74% {
+    text-shadow: none;
+    opacity: 0.3;
+  }
+
+  78% {
+    text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+    opacity: 1;
+  }
+
+  80% {
+    text-shadow: none;
+    opacity: 0.4;
+  }
+
+  /* Вновь загорается и горит до конца цикла */
+  85%,
+  100% {
+    text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
+    opacity: 1;
   }
 }

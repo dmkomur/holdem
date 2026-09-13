@@ -18,9 +18,9 @@
         max-width: 1200px;
         padding: 1.25rem;
         background: rgba(15, 23, 42, 0.6);
-        border: 1px solid rgba(255, 140, 0, 0.35);
+        border: 1px solid var(--texas-orange);
         border-radius: 10px;
-        box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 0 10px var(--texas-orange-glow);
 }
 
 .lobby-header {

@@ -19,7 +19,7 @@ export const ControlPanel: React.FC = () => {
         <div className="control-panel" role="region" aria-label="Game Controls">
             {/* Компактное информационное табло */}
             <div className="status-bar">
-                <div className="status-item">
+                <div className="status-item highlight">
                     <span className="status-label">BALANCE</span>
                     <span className="status-value">${balance}</span>
                 </div>
@@ -29,9 +29,9 @@ export const ControlPanel: React.FC = () => {
                     <span className="status-value">${winAmount}</span>
                 </div>
 
-                <div className="status-item">
+                <div className="status-item highlight">
                     <span className="status-label">BET</span>
-                    <span className="status-value">{bet}</span>
+                    <span className="status-value">${bet}</span>
                 </div>
             </div>
 
