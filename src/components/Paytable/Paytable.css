@@ -17,13 +17,12 @@
         border-bottom: 1px solid rgba(0, 243, 255, 0.3);
         font-weight: 700;
         font-size: clamp(0.75rem, 2vw, 0.9rem);
-        color: #ffe600;
+        color: var(--neon-gold);
 }
 
 .paytable-body {
         display: flex;
         flex-direction: column;
-        /* Резиновый зазор между строками вместо фиксированных padding */
         gap: 2px;
         padding: 0.25rem 0;
 }
@@ -46,14 +45,13 @@
 }
 
 .payout-value {
-        color: #ffffff;
+        color: var(--text-main);
         font-weight: 700;
         margin-left: 0.5rem;
 }
 
-/* Подсветка выигравшей комбинации */
 .paytable-row.winning-row {
-        background-color: #ffe600;
+        background-color: var(--neon-gold);
         animation: pulse-win 1s infinite alternate;
 }
 

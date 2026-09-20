@@ -5,6 +5,8 @@ import "./Hand.css";
 
 const DUMMY_CARDS = Array.from({ length: 5 });
 
+// Komponent som viser de 5 utdelte kortene på spillerens hånd.
+
 export const Hand: React.FC = () => {
     const hand = useGameStore((state) => state.hand);
     const status = useGameStore((state) => state.status);

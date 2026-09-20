@@ -1,0 +1,67 @@
+.btn {
+        font-family: inherit;
+        min-height: 44px;
+        padding: 0.5rem 1rem;
+        border: none;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: clamp(0.85rem, 2vw, 1rem);
+        cursor: pointer;
+        transition: all 0.15s ease;
+        touch-action: manipulation;
+        box-sizing: border-box;
+}
+
+.btn:disabled {
+        opacity: 0.35;
+        cursor: not-allowed;
+        box-shadow: none !important;
+        transform: none !important;
+}
+
+.btn-primary,
+.btn-deal {
+        min-height: 50px;
+        background-color: var(--texas-orange);
+        color: var(--bg-deep-space);
+        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
+        border: 8px outset var(--texas-orange-glow);
+}
+
+.btn-primary,
+.btn-deal {
+        flex: 1.6;
+}
+
+.btn-primary:hover:not(:disabled),
+.btn-deal:hover:not(:disabled) {
+        background-color: #e76508;
+        box-shadow: 0 0 2px var(--neon-gold);
+        border-color: var(--texas-orange);
+}
+
+.btn-secondary {
+        flex: 1;
+        background: var(--text-muted);
+        color: var(--bg-deep-space);
+        border: 8px outset var(--suit-black);
+}
+
+.btn-secondary:hover:not(:disabled) {
+        background: #a090c0;
+        border-color: var(--text-muted);
+        color: var(--bg-card-purple);
+}
+
+.btn-link {
+        min-height: 36px;
+        padding: 0;
+        background: transparent;
+        color: var(--neon-cyan);
+        font-weight: 500;
+        text-decoration: underline;
+}
+
+.btn-link:hover:not(:disabled) {
+        color: var(--texas-orange);
+}

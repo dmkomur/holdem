@@ -50,7 +50,6 @@
 .form-input {
         width: 100%;
         min-height: 44px;
-        /* Touch target */
         padding: 0.5rem 0.8rem;
         background: rgba(10, 15, 30, 0.9);
         border: 1px solid var(--neon-cyan);
@@ -86,33 +85,8 @@
 
 
 .btn-primary {
-        flex: 1.6;
-        min-height: 50px;
-        background-color: var(--texas-orange);
-        font-size: clamp(0.95rem, 2.2vw, 1.15rem);
-        border: 8px outset var(--texas-orange-glow);
-        font-family: inherit;
+        width: 100%;
 }
-
-.btn-primary:hover:not(:disabled) {
-        background-color: #e76508;
-        box-shadow: 0px 0px 2px var(--neon-gold);
-        border-color: var(--texas-orange);
-}
-
-.btn-link {
-        background: transparent;
-        color: #00f3ff;
-        text-decoration: underline;
-        min-height: 36px;
-        padding: 0;
-        font-weight: 500;
-}
-
-.btn-link:hover {
-        color: #ff8c00;
-}
-
 
 .player-form:has(.form-input:placeholder-shown) .btn-primary {
         opacity: 0.35;

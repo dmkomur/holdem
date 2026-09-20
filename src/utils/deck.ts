@@ -18,6 +18,7 @@ const RANKS: { rank: Rank; value: number }[] = [
     { rank: "A", value: 14 },
 ];
 
+// Oppretter en ny, komplett kortstokk med 52 spillkort.
 export const createDeck = (): PlayingCard[] => {
     const deck: PlayingCard[] = [];
 
@@ -35,9 +36,7 @@ export const createDeck = (): PlayingCard[] => {
     return deck;
 };
 
-/**
- * Тасует колоду с использованием алгоритма Фишера — Йейтса (Fisher-Yates Shuffle)
- */
+// Stokker kortstokken ved hjelp av Fisher-Yates-algoritmen.
 export const shuffleDeck = (deck: PlayingCard[]): PlayingCard[] => {
     const shuffled = [...deck];
     for (let i = shuffled.length - 1; i > 0; i--) {

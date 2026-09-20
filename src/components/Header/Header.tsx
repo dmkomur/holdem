@@ -1,6 +1,8 @@
 import React from "react";
 import "./Header.css";
 
+// Header-komponent som viser tittel og fungerer som navigeringsknapp tilbake til lobbyen.
+
 export const Header: React.FC = () => {
     return (
         <header className="app-header">

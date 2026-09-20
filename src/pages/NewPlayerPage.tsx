@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../store/useGameStore";
 import "./NewPlayerPage.css";
 
+// Side for registrering av ny spiller som lagrer spillerdata i tilstanden og navigerer videre i applikasjonen.
+
 export const NewPlayerPage: React.FC = () => {
     const navigate = useNavigate();
     const startNewPlayerSession = useGameStore(
@@ -40,7 +42,7 @@ export const NewPlayerPage: React.FC = () => {
                         name="userName"
                         type="text"
                         className="form-input"
-                        defaultValue="" /* Всегда пустой инпут для ввода НОВОГО имени */
+                        defaultValue=""
                         placeholder="Enter name..."
                         maxLength={15}
                         autoFocus
@@ -49,7 +51,7 @@ export const NewPlayerPage: React.FC = () => {
                 </div>
 
                 <div className="form-actions">
-                    <button type="submit" className=" btn-primary">
+                    <button type="submit" className="btn btn-primary">
                         START WITH $100
                     </button>
                 </div>

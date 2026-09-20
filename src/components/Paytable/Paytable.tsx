@@ -1,20 +1,9 @@
 import React from "react";
-import { PAYOUT_TABLE } from "../../types/poker";
-import type { PokerHand } from "../../types/poker";
+import { PAYOUT_TABLE, POKER_HANDS } from "../../types/poker";
 import { useGameStore } from "../../store/useGameStore";
 import "./Paytable.css";
 
-const HANDS_ORDER: PokerHand[] = [
-    "Royal Flush",
-    "Straight Flush",
-    "Four of a Kind",
-    "Full House",
-    "Flush",
-    "Straight",
-    "Three of a Kind",
-    "Two Pair",
-    "Jacks or Better",
-];
+// Beregner gevinst og viser utbetalingstabellen med vinnerkombinasjoner, innsats og potensiell utbetaling.
 
 export const Paytable: React.FC = () => {
     const bet = useGameStore((state) => state.bet);
@@ -32,7 +21,7 @@ export const Paytable: React.FC = () => {
             </div>
 
             <div className="paytable-body">
-                {HANDS_ORDER.map((handName) => {
+                {POKER_HANDS.map((handName) => {
                     const baseMultiplier = PAYOUT_TABLE[handName];
                     const currentPayout = baseMultiplier * bet;
                     const isWinningRow = evaluation?.hand === handName;

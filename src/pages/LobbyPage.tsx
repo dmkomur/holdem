@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { useGameStore } from "../store/useGameStore";
 import "./LobbyPage.css";
 
+// Lobbyside på rotadressen (/) som fungerer som programmets startpunkt for navigasjon.
+
 export const LobbyPage: React.FC = () => {
     const navigate = useNavigate();
     const userName = useGameStore((state) => state.userName);
@@ -66,7 +68,7 @@ export const LobbyPage: React.FC = () => {
                 <footer className="lobby-actions">
                     <button
                         type="button"
-                        className="btn btn-primary btn-play"
+                        className="btn btn-primary"
                         onClick={() => navigate("/game")}
                         disabled={!canPlay}
                     >

@@ -1,6 +1,7 @@
 import { PAYOUT_TABLE } from "../types/poker";
 import type { HandEvaluation, PlayingCard, PokerHand } from "../types/poker";
 
+// Evaluerer de fem kortene på hånden og bestemmer den beste vinnende pokerhånden.
 export const evaluateHand = (cards: PlayingCard[]): HandEvaluation => {
     if (cards.length !== 5) {
         return { hand: "Lose", payoutMultiplier: 0 };
@@ -10,11 +11,15 @@ export const evaluateHand = (cards: PlayingCard[]): HandEvaluation => {
     const values = sorted.map((c) => c.value);
     const suits = sorted.map((c) => c.suit);
 
+    // Sjekker om alle fem kortene på hånden har samme kortfarge (Flush).
     const isFlush = suits.every((s) => s === suits[0]);
 
+    // Sjekker om kortene på hånden danner en sekvens (Straight).
     const isStraightStandard = values.every(
         (val, idx) => idx === 0 || val === values[idx - 1] + 1,
     );
+
+    // Sjekker om kortene danner en lav Straight med ess som laveste kort (A-2-3-4-5).
     const isAceLowStraight =
         values[0] === 2 &&
         values[1] === 3 &&
@@ -23,18 +28,18 @@ export const evaluateHand = (cards: PlayingCard[]): HandEvaluation => {
         values[4] === 14;
     const isStraight = isStraightStandard || isAceLowStraight;
 
-    // 3. Подсчет совпадений достоинств
+    // Teller opp forekomster av hver kortverdi på hånden.
     const countsMap = new Map<number, number>();
     values.forEach((v) => countsMap.set(v, (countsMap.get(v) || 0) + 1));
     const counts = Array.from(countsMap.values()).sort((a, b) => b - a);
 
-    // Вспомогательная функция сборки ответа
+    //Hjelpefunksjon som setter sammen og returnerer det endelige evalueringsresultatet for pokerhånden.
     const win = (hand: PokerHand): HandEvaluation => ({
         hand,
         payoutMultiplier: PAYOUT_TABLE[hand],
     });
 
-    // --- Проверка выигрышных комбинаций ---
+    //Sjekk vinnende kombinasjoner
 
     if (isFlush && isStraightStandard && values[0] === 10 && values[4] === 14) {
         return win("Royal Flush");
@@ -70,7 +75,7 @@ export const evaluateHand = (cards: PlayingCard[]): HandEvaluation => {
 
     if (counts[0] === 2) {
         const pairValue = Array.from(countsMap.entries()).find(
-            ([_, count]) => count === 2,
+            ([, count]) => count === 2,
         )?.[0];
         if (pairValue && pairValue >= 11) {
             return win("Jacks or Better");

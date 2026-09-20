@@ -34,6 +34,20 @@ export type PokerHand =
     | "Straight Flush"
     | "Royal Flush";
 
+export type GameStatus = "idle" | "dealt" | "evaluated";
+
+export const POKER_HANDS: PokerHand[] = [
+    "Royal Flush",
+    "Straight Flush",
+    "Four of a Kind",
+    "Full House",
+    "Flush",
+    "Straight",
+    "Three of a Kind",
+    "Two Pair",
+    "Jacks or Better",
+];
+
 export const PAYOUT_TABLE: Record<PokerHand, number> = {
     Lose: 0,
     "Jacks or Better": 1,
@@ -51,8 +65,6 @@ export interface Player {
     name: string;
     coins: number;
 }
-
-export type GameStage = "idle" | "dealt" | "evaluated";
 
 export interface HandEvaluation {
     hand: PokerHand;

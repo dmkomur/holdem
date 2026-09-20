@@ -22,19 +22,29 @@ const getSuitSymbol = (suit: Suit): string => {
     }
 };
 
+// Komponent som viser et enkelt kort og håndterer logikken for kortet.
+
 export const Card: React.FC<CardProps> = ({
     card,
     isFaceDown = false,
     isHeld = false,
     onClick,
 }) => {
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
+        if (onClick && (event.key === "Enter" || event.key === " ")) {
+            event.preventDefault();
+            onClick();
+        }
+    };
+
     if (isFaceDown || !card) {
         return (
             <div
                 className="card card--face-down"
                 onClick={onClick}
+                onKeyDown={handleKeyDown}
                 role="button"
-                tabIndex={0}
+                tabIndex={onClick ? 0 : -1}
                 aria-label="Face down card"
             >
                 <div className="card__back-emblem">ST</div>
@@ -55,8 +65,9 @@ export const Card: React.FC<CardProps> = ({
         <div
             className={cardClasses}
             onClick={onClick}
+            onKeyDown={handleKeyDown}
             role="button"
-            tabIndex={0}
+            tabIndex={onClick ? 0 : -1}
             aria-label={`${card.rank} of ${card.suit}${isHeld ? " held" : ""}`}
         >
             <div className="card__top">

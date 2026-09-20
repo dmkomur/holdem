@@ -50,40 +50,6 @@ body {
   padding: 1rem;
 }
 
-.pixel-button {
-  font-family: var(--font-pixel);
-  font-size: 0.75rem;
-  padding: 12px 18px;
-  color: var(--bg-deep-space);
-  background-color: var(--texas-orange);
-  border: 4px solid #ffffff;
-  box-shadow: 0 4px 0px var(--royal-purple);
-  cursor: pointer;
-  text-transform: uppercase;
-  transition: all 0.1s ease;
-  user-select: none;
-}
-
-.pixel-button:hover {
-  background-color: var(--texas-orange-glow);
-  box-shadow: 0 0 14px var(--texas-orange-glow), 0 4px 0px var(--royal-purple-glow);
-  transform: translateY(-2px);
-}
-
-.pixel-button:active {
-  transform: translateY(2px);
-  box-shadow: 0 2px 0px var(--royal-purple);
-}
-
-.pixel-button:disabled {
-  background-color: #4a3b63;
-  color: #7a6b93;
-  border-color: #5b4b73;
-  box-shadow: none;
-  cursor: not-allowed;
-  transform: none;
-}
-
 h1 {
   animation: flicker 9s infinite;
   font-family: var(--font-pixel);
@@ -114,28 +80,24 @@ a:hover {
 
   0%,
   100% {
-    /* Фиолетовый (исходный) */
     background-image:
       linear-gradient(rgba(138, 43, 226, 0.15) 1px, transparent 1px),
       linear-gradient(90deg, rgba(138, 43, 226, 0.15) 1px, transparent 1px);
   }
 
   75% {
-    /* Неоново-голубой/киберпанк */
     background-image:
       linear-gradient(rgba(98, 17, 204, 0.25) 1px, transparent 1px),
       linear-gradient(90deg, rgba(62, 11, 155, 0.25) 1px, transparent 1px);
   }
 
   50% {
-    /* Неоново-голубой/киберпанк */
     background-image:
       linear-gradient(rgba(90, 12, 192, 0.25) 1px, transparent 1px),
       linear-gradient(90deg, rgba(76, 11, 198, 0.25) 1px, transparent 1px);
   }
 
   25% {
-    /* Неоново-голубой/киберпанк */
     background-image:
       linear-gradient(rgba(90, 12, 192, 0.25) 1px, transparent 1px),
       linear-gradient(90deg, rgba(59, 11, 147, 0.25) 1px, transparent 1px);
@@ -145,14 +107,12 @@ a:hover {
 
 @keyframes flicker {
 
-  /* Горит ровно ~2 секунды (от 0% до 40%) */
   0%,
   40% {
     text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
     opacity: 1;
   }
 
-  /* Прерывистое мерцание (быстрый сбой проводки) */
   42% {
     text-shadow: none;
     opacity: 0.3;
@@ -173,15 +133,12 @@ a:hover {
     opacity: 0.9;
   }
 
-  /* Полностью тухнет на ~1 секунду */
   50%,
   70% {
     text-shadow: none;
     opacity: 0.15;
-    /* Оставляем едва заметную тусклость */
   }
 
-  /* Пара быстрых морганий перед включением */
   72% {
     text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);
     opacity: 1;
@@ -202,7 +159,6 @@ a:hover {
     opacity: 0.4;
   }
 
-  /* Вновь загорается и горит до конца цикла */
   85%,
   100% {
     text-shadow: 3px 3px 0px var(--bg-deep-space), 0 0 10px var(--texas-orange-glow);

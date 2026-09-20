@@ -3,8 +3,16 @@ import { persist } from "zustand/middleware";
 import type { PlayingCard, HandEvaluation } from "../types/poker";
 import { createDeck, shuffleDeck } from "../utils/deck";
 import { evaluateHand } from "../utils/pokerEvaluator";
+import type { GameStatus } from "../types/poker";
 
-export type GameStatus = "idle" | "dealt" | "evaluated";
+// Oppretter og returnerer starttilstanden for en ny spillrunde med standardverdier.
+const createRoundState = () => ({
+    status: "idle" as GameStatus,
+    deck: [],
+    hand: [],
+    evaluation: null,
+    winAmount: 0,
+});
 
 export interface CardState {
     card: PlayingCard;
@@ -31,43 +39,35 @@ interface GameStore {
     resetGame: () => void;
 }
 
+// Oppretter Zustand-store for spillets tilstand og bruker persist-middleware for automatisk lagring i localStorage.
 export const useGameStore = create<GameStore>()(
     persist(
         (set, get) => ({
             userName: "",
             balance: 100,
             bet: 1,
-            status: "idle",
-            deck: [],
-            hand: [],
-            evaluation: null,
-            winAmount: 0,
+            ...createRoundState(),
 
+            // Oppretter en ny spillsesjon og klargjør tilstanden for en ny runde.
             startNewPlayerSession: (name: string) => {
                 set({
                     userName: name,
                     balance: 100,
-                    status: "idle",
-                    deck: [],
-                    hand: [],
-                    evaluation: null,
-                    winAmount: 0,
+                    ...createRoundState(),
                 });
             },
 
+            // Tilbakestiller den nåværende spillsesjonen til starttilstanden.
             resetSession: () => {
                 set({
                     userName: "",
                     balance: 100,
                     bet: 1,
-                    status: "idle",
-                    deck: [],
-                    hand: [],
-                    evaluation: null,
-                    winAmount: 0,
+                    ...createRoundState(),
                 });
             },
 
+            // Oppdaterer og setter størrelsen på spillerens innsats for runden.
             setBet: (amount) => {
                 const { status, balance } = get();
                 if (status !== "idle") return;
@@ -76,6 +76,7 @@ export const useGameStore = create<GameStore>()(
                 }
             },
 
+            // Deler ut de første 5 kortene fra kortstokken til spillerens hånd.
             deal: () => {
                 const { balance, bet, status } = get();
                 if (status !== "idle" || balance < bet) return;
@@ -99,6 +100,7 @@ export const useGameStore = create<GameStore>()(
                 });
             },
 
+            // Veksler hold-statusen for et valgt kort på hånden mellom utdelinger.
             toggleHold: (index) => {
                 const { status, hand } = get();
                 if (status !== "dealt") return;
@@ -112,6 +114,7 @@ export const useGameStore = create<GameStore>()(
                 set({ hand: newHand });
             },
 
+            // Deler ut nye kort for å erstatte kortene som ikke er holdt, og evaluerer sluttresultatet og gevinsten for runden.
             draw: () => {
                 const { status, hand, deck, bet, balance } = get();
                 if (status !== "dealt") return;
@@ -142,22 +145,18 @@ export const useGameStore = create<GameStore>()(
                 });
             },
 
-            // Переход к следующей сделке (Next Hand)
+            // Tilbakestiller runden og gjør klar kortstokken for en ny utdeling.
             resetGame: () => {
                 const { balance, bet } = get();
                 set({
-                    status: "idle",
-                    hand: [],
-                    deck: [],
-                    evaluation: null,
-                    winAmount: 0,
+                    ...createRoundState(),
                     bet: balance < bet ? Math.max(1, balance) : bet,
                 });
             },
         }),
         {
+            // Konfigurerer persist-middleware ved å velge hvilke tilstandsvariabler som skal lagres i localStorage.
             name: "space-texas-poker-storage",
-            // При F5/перезагрузке сохраняем ВСЕ: имя, баланс и незавершенную раздачу!
             partialize: (state) => ({
                 userName: state.userName,
                 balance: state.balance,

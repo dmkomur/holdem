@@ -6,6 +6,8 @@ import { Hand } from "../components/Hand/Hand";
 import { ControlPanel } from "../components/ControlPanel/ControlPanel";
 import "./GamePage.css";
 
+// Spillside som samler og viser alle komponentene for spilleautomaten.
+
 export const GamePage: React.FC = () => {
     const navigate = useNavigate();
     const userName = useGameStore((state) => state.userName);
